@@ -3224,7 +3224,7 @@
         col: 'MdB3ywvp40CNOGDRzlRK', title: 'Percepción del precio',
         sub: 'El papel higiénico Renova TextilPapier de 3 capas tiene un precio de 3,49€ (pack de 6 rollos). ¿Cómo consideras este precio?',
         type: 'hbar', section: 'intencion', blueGradient: true,
-        fixedOrder: ['Muy caro', 'Un poco caro', 'Justo', 'Muy económico'],
+        fixedOrder: ['Muy económico', 'Justo', 'Un poco caro', 'Muy caro'],
         colorMap: { 'Muy caro': '#E0253F', 'Un poco caro': '#E0253F' }
       },
       {
@@ -4563,7 +4563,7 @@
       // ─ Comprarían: %% de "Compradores Potenciales" en TMmwezDOtVjK1PniOoHr (benchmark 48%%)
       const iIdx = getIdx('TMmwezDOtVjK1PniOoHr');
       const iArr = getColData(rows, iIdx);
-      const compradores = iArr.filter(v => { const l = norm(v); return l.includes('compradores potenciales') || l.includes('comprador potencial'); }).length;
+      const compradores = iArr.filter(v => { const l = norm(v); return l.includes('tengo intencion de comprarlo') || l.startsWith('si'); }).length;
       const iPct = iArr.length ? pct(compradores, iArr.length) : 0;
       document.getElementById('kpiIntencion').textContent = iArr.length ? iPct + '%' : '—';
       document.getElementById('kpiIntencionBench').innerHTML = iArr.length ? benchTagPct(iPct, BENCH_INTENCION) : '';
@@ -4623,7 +4623,7 @@
       // 2. Comprarían vs benchmark 48%
       const iIdx = getIdx('TMmwezDOtVjK1PniOoHr');
       const iArr = getColData(rows, iIdx);
-      const compradores = iArr.filter(v => { const l = norm(v); return l.includes('compradores potenciales') || l.includes('comprador potencial'); }).length;
+      const compradores = iArr.filter(v => { const l = norm(v); return l.includes('tengo intencion de comprarlo') || l.startsWith('si'); }).length;
       const iPct = iArr.length ? pct(compradores, iArr.length) : 0;
       const iDiff = iPct - BENCH_INTENCION;
       const iCmp = Math.abs(iDiff) < 0.5 ? `<strong>iguala el benchmark</strong> de ${BENCH_INTENCION}%` : (iDiff > 0 ? `<strong>supera en ${iDiff} puntos</strong> el benchmark de ${BENCH_INTENCION}%` : `queda <strong>${Math.abs(iDiff)} puntos por debajo</strong> del benchmark de ${BENCH_INTENCION}%`);
